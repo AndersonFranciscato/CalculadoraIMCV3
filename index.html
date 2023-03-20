@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <style>
+        body {
+            background-color: #5b956e;
+        }
+
+        form {
+    /* Apenas para centralizar o form na página */
+    margin: 0 auto;
+    width: 400px;
+    /* Para ver as bordas do formulário */
+    padding: 1em;
+    border: 1px solid #cccccc;
+    border-radius: 1em;
+}
+
+    </style>
+</head>
+
+<body>
+    
+    
+        <form>
+
+            <h1>Calculadora para o IMC</h1>
+            <br>
+            Digite o seu Peso
+            <br>
+            <input type="text" id="peso">
+            <br>
+            Digite a sua Altura 
+            <br>
+            <input type="text" id="altura">
+            <br> 
+            <button style="color: blueviolet;" type="button" onclick="calcular()">Calcular IMC</button>
+            <br> 
+            <p></p>
+
+        </form>
+
+    <script>
+
+        function calcular(){
+            var peso,altura,imc;
+
+            peso = parseFloat(document.getElementById("peso").value);
+            altura = parseFloat(document.getElementById("altura").value);
+
+            imc = peso / (2 * altura).toFixed(1);
+
+            document.querySelector("p").innerHTML = imc + ' ' + classificacaoimc(imc);
+
+        }
+
+
+        function classificacaoimc(imc){
+                if(imc < 18.5 ){
+                    return 'Magreza';
+                }
+                if(imc >18.5 && imc<= 24.9){
+                    return 'Normal';
+                } 
+                if(imc >24.9 && imc<= 29.9){
+                    return 'Sobrepeso';
+                } 
+                if(imc >29.9 && imc<= 34.9){
+                    return 'Onesidade Grau 1';
+                }
+                if(imc >34.9 && imc<= 39.9){
+                    return 'Obesidade Grau 2';
+                }
+                else {
+                    return 'Obesidade Grau 3';
+                }
+
+        }  
+
+
+     </script>    
+    
+</body>
+</html>
